@@ -3,6 +3,7 @@ import { StatusActivity } from 'src/core/enum/statusActivity.enum';
 import { ResourceNotFoundError } from 'src/core/errors/errors/resource-not-found-error';
 import { Activity } from '../../enterprise/entities/activity';
 import { ActivitiesRepository } from '../repositories/activity-repository';
+import { Injectable } from '@nestjs/common';
 
 interface EditActivityUseCaseRequest {
   activityId: string;
@@ -18,7 +19,7 @@ type EditActivityUseCaseResponse = Either<
     activity: Activity;
   }
 >;
-
+@Injectable()
 export class EditActivityUseCase {
   constructor(private activityRepository: ActivitiesRepository) {}
 

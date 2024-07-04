@@ -2,6 +2,7 @@ import { Either, right } from 'src/core/either';
 import { StatusActivity } from 'src/core/enum/statusActivity.enum';
 import { Activity } from '../../enterprise/entities/activity';
 import { ActivitiesRepository } from '../repositories/activity-repository';
+import { Injectable } from '@nestjs/common';
 
 interface CreateActivityUseCaseRequest {
   name: string;
@@ -16,7 +17,7 @@ type CreateActivityUseCaseResponse = Either<
     activity: Activity;
   }
 >;
-
+@Injectable()
 export class CreateActivityUseCase {
   constructor(private activityRepository: ActivitiesRepository) {}
 

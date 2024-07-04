@@ -22,4 +22,9 @@ export class InMemoryActivitiesRepository implements ActivitiesRepository {
     const itemIndex = this.items.findIndex((item) => item.id === activity.id);
     this.items[itemIndex] = activity;
   }
+
+  async delete(activity: Activity): Promise<void> {
+    const itemIndex = this.items.findIndex((item) => item.id === activity.id);
+    this.items.splice(itemIndex, 1);
+  }
 }

@@ -17,7 +17,7 @@ describe('Create Activity', () => {
       description:
         'Esporte de equipe jogado com uma bola em que o objetivo é marcar gols.',
       status: StatusActivity.Active,
-      category: 'Esporte de equipe',
+      category: 'Invasão',
     });
 
     expect(result.isRight()).toBe(true);
