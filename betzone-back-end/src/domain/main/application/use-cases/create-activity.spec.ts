@@ -21,8 +21,8 @@ describe('Create Activity', () => {
     });
 
     expect(result.isRight()).toBe(true);
-    expect(inMemoryActivitiesRepository.items[0]).toEqual(
-      result.value.activity,
-    );
+    expect(result.value).toEqual({
+      activity: inMemoryActivitiesRepository.items[0],
+    });
   });
 });
