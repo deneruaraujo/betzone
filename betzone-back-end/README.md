@@ -5,8 +5,6 @@
   - description;
   - status;
   - category;
-  - creationDate;
-  - lastUpdate.
 - [] Deve ser possível editar uma atividade, sendo possível alterar alguns dos dados acima;
 - [] Deve ser possível deletar uma atividade;
 - [] Deve ser possível listar todas as atividades;
