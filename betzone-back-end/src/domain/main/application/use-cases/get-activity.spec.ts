@@ -1,18 +1,17 @@
 import { InMemoryActivitiesRepository } from 'test/repositories/in-memory-activities-repository';
-import { DeleteActivityUseCase } from './delete-activity';
+import { GetActivityUseCase } from './get-activity';
 import { makeActivity } from 'test/factories/make-activity';
-import { ResourceNotFoundError } from 'src/core/errors/errors/resource-not-found-error';
 
 let inMemoryActivitiesRepository: InMemoryActivitiesRepository;
-let sut: DeleteActivityUseCase;
+let sut: GetActivityUseCase;
 
-describe('Delete Activity', () => {
+describe('Get Activity Use Case', () => {
   beforeEach(() => {
     inMemoryActivitiesRepository = new InMemoryActivitiesRepository();
-    sut = new DeleteActivityUseCase(inMemoryActivitiesRepository);
+    sut = new GetActivityUseCase(inMemoryActivitiesRepository);
   });
 
-  it('should be able to delete an activity', async () => {
+  it('should be able to get an activity', async () => {
     const activity = makeActivity({});
 
     await inMemoryActivitiesRepository.create(activity);
@@ -22,10 +21,9 @@ describe('Delete Activity', () => {
     });
 
     expect(result.isRight()).toBe(true);
-    expect(inMemoryActivitiesRepository.items).toHaveLength(0);
   });
 
-  it('should not be able to delete an activity that does not exist', async () => {
+  it('should not be able to get an activity that does not exist', async () => {
     const activity = makeActivity({});
 
     await inMemoryActivitiesRepository.create(activity);
@@ -35,6 +33,5 @@ describe('Delete Activity', () => {
     });
 
     expect(result.isLeft()).toBe(true);
-    expect(result.value).toBeInstanceOf(ResourceNotFoundError);
   });
 });

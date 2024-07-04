@@ -38,7 +38,7 @@ describe('Edit Activity', () => {
     await inMemoryActivitiesRepository.create(activity);
 
     const result = await sut.execute({
-      activityId: 'user-01', // user id that does not exist to cause an error
+      activityId: 'user-01', // non-existent ID to trigger an error
       name: 'Test name',
       category: 'Test category',
       status: StatusActivity.Active,

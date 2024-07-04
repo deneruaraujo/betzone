@@ -6,7 +6,7 @@
   - category;
 - [x] Deve ser possível editar uma atividade, sendo possível alterar todos os dados acima;
 - [x] Deve ser possível deletar uma atividade;
-- [] Deve ser possível obter dados de uma única atividade;
+- [X] Deve ser possível obter dados de uma única atividade;
 - [] Deve ser possível listar todas as atividades;
 
 ## Requisitos de Negócio
