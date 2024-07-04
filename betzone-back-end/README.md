@@ -1,6 +1,5 @@
 ## Requisitos Funcionais
-- [] Deve ser possível registrar uma atividade, contendo os seguintes dados:
-  - id;
+- [x] Deve ser possível registrar uma atividade, contendo os seguintes dados:
   - name;
   - description;
   - status;
