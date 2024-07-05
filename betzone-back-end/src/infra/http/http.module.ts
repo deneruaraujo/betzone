@@ -6,6 +6,8 @@ import { CreateActivityUseCase } from 'src/domain/main/application/use-cases/cre
 import { EditActivityController } from './controllers/edit-activity.controller';
 import { DeleteActivityController } from './controllers/delete-activity.controller';
 import { DeleteActivityUseCase } from 'src/domain/main/application/use-cases/delete-activity';
+import { GetActivityController } from './controllers/get-activity.controller';
+import { GetActivityUseCase } from 'src/domain/main/application/use-cases/get-activity';
 
 @Module({
   imports: [DatabaseModule],
@@ -13,11 +15,13 @@ import { DeleteActivityUseCase } from 'src/domain/main/application/use-cases/del
     CreateActivityController,
     EditActivityController,
     DeleteActivityController,
+    GetActivityController,
   ],
   providers: [
     CreateActivityUseCase,
     EditActivityUseCase,
     DeleteActivityUseCase,
+    GetActivityUseCase,
   ],
 })
 export class HttpModule {}
