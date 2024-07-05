@@ -5,7 +5,7 @@ import { DatabaseModule } from 'src/infra/database/database.module';
 import { ActivityFactory } from 'test/factories/make-activity';
 import request from 'supertest';
 
-describe('Get Activity (E2E)', () => {
+describe('Fetch Activities (E2E)', () => {
   let app: INestApplication;
   let activityFactory: ActivityFactory;
 
@@ -22,20 +22,26 @@ describe('Get Activity (E2E)', () => {
     await app.init();
   });
 
-  test('[GET] /activities/:id', async () => {
-    const activity = await activityFactory.makePrismaActivity({
-      name: 'Activity-01',
-    });
-
-    const activityId = activity.id.toString();
+  test('[GET] /activities', async () => {
+    await Promise.all([
+      activityFactory.makePrismaActivity({
+        name: 'Activity-01',
+      }),
+      activityFactory.makePrismaActivity({
+        name: 'Activity-02',
+      }),
+    ]);
 
     const response = await request(app.getHttpServer())
-      .get(`/activities/${activityId}`)
+      .get('/activities')
       .send();
 
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual({
-      activity: expect.objectContaining({ name: 'Activity-01' }),
+      activities: expect.arrayContaining([
+        expect.objectContaining({ name: 'Activity-01' }),
+        expect.objectContaining({ name: 'Activity-02' }),
+      ]),
     });
   });
 });

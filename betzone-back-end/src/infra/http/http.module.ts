@@ -1,3 +1,4 @@
+import { FetchActivitiesController } from './controllers/fetch-activities.controller';
 import { EditActivityUseCase } from './../../domain/main/application/use-cases/edit-activity';
 import { Module } from '@nestjs/common';
 import { DatabaseModule } from '../database/database.module';
@@ -8,6 +9,7 @@ import { DeleteActivityController } from './controllers/delete-activity.controll
 import { DeleteActivityUseCase } from 'src/domain/main/application/use-cases/delete-activity';
 import { GetActivityController } from './controllers/get-activity.controller';
 import { GetActivityUseCase } from 'src/domain/main/application/use-cases/get-activity';
+import { FetchActivitiesUseCase } from 'src/domain/main/application/use-cases/fetch-activities';
 
 @Module({
   imports: [DatabaseModule],
@@ -16,12 +18,14 @@ import { GetActivityUseCase } from 'src/domain/main/application/use-cases/get-ac
     EditActivityController,
     DeleteActivityController,
     GetActivityController,
+    FetchActivitiesController,
   ],
   providers: [
     CreateActivityUseCase,
     EditActivityUseCase,
     DeleteActivityUseCase,
     GetActivityUseCase,
+    FetchActivitiesUseCase,
   ],
 })
 export class HttpModule {}
