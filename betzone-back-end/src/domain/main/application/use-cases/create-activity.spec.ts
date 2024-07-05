@@ -1,6 +1,6 @@
 import { InMemoryActivitiesRepository } from 'test/repositories/in-memory-activities-repository';
 import { CreateActivityUseCase } from './create-activity';
-import { StatusActivity } from 'src/core/enum/statusActivity.enum';
+import { ActivityStatus } from 'src/core/enum/activitystatus.enum';
 
 let inMemoryActivitiesRepository: InMemoryActivitiesRepository;
 let sut: CreateActivityUseCase;
@@ -16,7 +16,7 @@ describe('Create Activity', () => {
       name: 'Futebol',
       description:
         'Esporte de equipe jogado com uma bola em que o objetivo é marcar gols.',
-      status: StatusActivity.Active,
+      status: ActivityStatus.Active,
       category: 'Invasão',
     });
 

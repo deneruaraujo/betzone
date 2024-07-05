@@ -1,7 +1,7 @@
 import { InMemoryActivitiesRepository } from 'test/repositories/in-memory-activities-repository';
 import { EditActivityUseCase } from './edit-activity';
 import { makeActivity } from 'test/factories/make-activity';
-import { StatusActivity } from 'src/core/enum/statusActivity.enum';
+import { ActivityStatus } from 'src/core/enum/activitystatus.enum';
 import { ResourceNotFoundError } from 'src/core/errors/errors/resource-not-found-error';
 
 let inMemoryActivitiesRepository: InMemoryActivitiesRepository;
@@ -22,7 +22,7 @@ describe('Edit Activity', () => {
       activityId: activity.id.toString(),
       name: 'Test name',
       category: 'Test category',
-      status: StatusActivity.Active,
+      status: ActivityStatus.Active,
       description: 'Test description',
     });
 
@@ -41,7 +41,7 @@ describe('Edit Activity', () => {
       activityId: 'user-01', // non-existent ID to trigger an error
       name: 'Test name',
       category: 'Test category',
-      status: StatusActivity.Active,
+      status: ActivityStatus.Active,
       description: 'Test description',
     });
 

@@ -1,4 +1,4 @@
-export const enum StatusActivity {
+export const enum ActivityStatus {
   Active = 'ACTIVE',
   Inactive = 'INACTIVE',
 }

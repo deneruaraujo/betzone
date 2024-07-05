@@ -1,5 +1,5 @@
 import { UniqueEntityId } from 'src/core/entities/unique-entity-id';
-import { StatusActivity } from 'src/core/enum/statusActivity.enum';
+import { ActivityStatus } from 'src/core/enum/activitystatus.enum';
 import {
   Activity,
   ActivityProps,
@@ -14,7 +14,7 @@ export function makeActivity(
       name: 'Futebol',
       description:
         'Esporte de equipe jogado com uma bola em que o objetivo é marcar gols.',
-      status: StatusActivity.Active,
+      status: ActivityStatus.Active,
       category: 'Invasão',
       ...override,
     },

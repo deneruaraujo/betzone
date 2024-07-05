@@ -1,12 +1,12 @@
 import { Entity } from 'src/core/entities/entity';
 import { UniqueEntityId } from 'src/core/entities/unique-entity-id';
-import { StatusActivity } from 'src/core/enum/statusActivity.enum';
+import { ActivityStatus } from 'src/core/enum/activityStatus.enum';
 import { Optional } from 'src/core/types/optional';
 
 export interface ActivityProps {
   name: string;
   description: string;
-  status: StatusActivity;
+  status: ActivityStatus;
   category: string;
   createdAt: Date;
   updatedAt?: Date | null;
@@ -39,7 +39,7 @@ export class Activity extends Entity<ActivityProps> {
     return this.props.status;
   }
 
-  set status(status: StatusActivity) {
+  set status(status: ActivityStatus) {
     this.props.status = status;
     this.touch();
   }

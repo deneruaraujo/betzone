@@ -1,5 +1,5 @@
 import { Either, left, right } from 'src/core/either';
-import { StatusActivity } from 'src/core/enum/statusActivity.enum';
+import { ActivityStatus } from 'src/core/enum/activitystatus.enum';
 import { ResourceNotFoundError } from 'src/core/errors/errors/resource-not-found-error';
 import { Activity } from '../../enterprise/entities/activity';
 import { ActivitiesRepository } from '../repositories/activity-repository';
@@ -9,7 +9,7 @@ interface EditActivityUseCaseRequest {
   activityId: string;
   name: string;
   description: string;
-  status: StatusActivity;
+  status: ActivityStatus;
   category: string;
 }
 

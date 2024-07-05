@@ -1,5 +1,5 @@
 import { Either, right } from 'src/core/either';
-import { StatusActivity } from 'src/core/enum/statusActivity.enum';
+import { ActivityStatus } from 'src/core/enum/activityStatus.enum';
 import { Activity } from '../../enterprise/entities/activity';
 import { ActivitiesRepository } from '../repositories/activity-repository';
 import { Injectable } from '@nestjs/common';
@@ -7,7 +7,7 @@ import { Injectable } from '@nestjs/common';
 interface CreateActivityUseCaseRequest {
   name: string;
   description: string;
-  status: StatusActivity;
+  status: ActivityStatus;
   category: string;
 }
 
