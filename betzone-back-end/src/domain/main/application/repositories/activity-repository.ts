@@ -6,5 +6,5 @@ export abstract class ActivitiesRepository {
   abstract findById(id: string): Promise<Activity | null>;
   abstract save(activity: Activity): Promise<void>;
   abstract delete(activity: Activity): Promise<void>;
-  abstract findManyById(params: PaginationParams): Promise<Activity[]>;
+  abstract findMany(paginationParams: PaginationParams): Promise<Activity[]>;
 }

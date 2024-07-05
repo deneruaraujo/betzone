@@ -53,6 +53,14 @@ export class Activity extends Entity<ActivityProps> {
     this.touch();
   }
 
+  get createdAt() {
+    return this.props.createdAt;
+  }
+
+  get updatedAt() {
+    return this.props.updatedAt;
+  }
+
   static create(
     props: Optional<ActivityProps, 'createdAt'>,
     id?: UniqueEntityId,

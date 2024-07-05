@@ -29,7 +29,7 @@ export class InMemoryActivitiesRepository implements ActivitiesRepository {
     this.items.splice(itemIndex, 1);
   }
 
-  async findManyById({ page }: PaginationParams): Promise<Activity[]> {
+  async findMany({ page }: PaginationParams): Promise<Activity[]> {
     const activities = this.items.slice((page - 1) * 20, page * 20);
 
     return activities;

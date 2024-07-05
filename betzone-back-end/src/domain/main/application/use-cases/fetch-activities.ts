@@ -21,7 +21,7 @@ export class FetchActivitiesUseCase {
   async execute({
     page,
   }: FetchActivitiesUseCaseRequest): Promise<FetchActivitiesUseCaseResponse> {
-    const activities = await this.activitiesRepository.findManyById({
+    const activities = await this.activitiesRepository.findMany({
       page,
     });
 
