@@ -7,3 +7,25 @@
     @apply min-h-screen bg-no-repeat bg-neutral-700 text-white
   }
 }
+
+.slide-up {
+  animation: slideUp 0.3s ease-in-out forwards, fadeOut 0.3s ease-in-out forwards;
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(20px);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
