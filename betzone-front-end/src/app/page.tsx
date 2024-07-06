@@ -1,5 +1,10 @@
+import ActivityForm from "@/components/ActivityForm";
+
+
 export default function Home() {
   return (
-   <h1 className="text-red-600">Hello World!!!</h1>
+    <main className="xl:w-1/2 xl:mx-auto">
+      <ActivityForm />
+    </main>
   );
 }
