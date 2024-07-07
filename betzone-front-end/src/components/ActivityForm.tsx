@@ -1,8 +1,6 @@
-"use client"
-
 import { ChangeEvent, FormEvent, useState } from "react"
 
-interface FormData {
+interface FormDataProps {
   name: string;
   description: string;
   status: string;
@@ -10,7 +8,7 @@ interface FormData {
 }
 
 export default function ActivityForm() {
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<FormDataProps>({
     name: '',
     description: '',
     status: 'ACTIVE',
@@ -25,8 +23,32 @@ export default function ActivityForm() {
     }));
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    try {
+      const response = await fetch('http://localhost:3001/activities', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (!response.ok) {
+        throw new Error('Erro ao enviar os dados');
+      }
+
+      alert('Atividade criada com sucesso');
+      setFormData({
+        name: '',
+        description: '',
+        status: 'ACTIVE',
+        category: ''
+      });
+    } catch (error) {
+      console.error('Erro a criar atividade:', error)
+    }
   };
 
   return (

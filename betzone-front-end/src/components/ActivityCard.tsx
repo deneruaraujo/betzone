@@ -1,40 +1,67 @@
-"use client"
-
-
+import { format } from "date-fns";
 import { useState } from "react";
 import { FaCircleCheck } from "react-icons/fa6";
+import { IoMdCloseCircle } from "react-icons/io";
 
+export interface ActivityCardProps {
+  id: number;
+  name: string;
+  description: string;
+  status: string;
+  category: string;
+  createdAt: string,
+  updatedAt: string,
+}
 
-export function ActivityCard() {
+export function ActivityCard({ id, name, description, status, category, createdAt, updatedAt }: ActivityCardProps) {
   const [isSelected, setIsSelected] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+
+  const formattedDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return format(date, 'dd MMM yyyy, hh:mm a');
+  };
 
   const handleCardClick = () => {
     setIsSelected(prevState => !prevState);
-
-    setTimeout(() => setIsVisible(false), 300);
   };
+
+  const handleDelete = async () => {
+    try {
+      const response = await fetch(`http://localhost:3001/activities/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-type': 'application/json'
+        },
+      });
+      if (!response.ok) {
+        throw new Error('Erro ao deletar atividade');
+      }
+      alert('Atividade deletada com sucesso');
+    } catch (error) {
+      console.error('Erro ao deletar atividade:', error)
+    }
+  }
 
   return (
     <>
-      <main onClick={handleCardClick} className={`p-4 mt-1 duration-300 hover:cursor-pointer hover:bg-[#474747] ${isSelected ? 'bg-neutral-900' : 'bg-neutral-800'}`}>
-        <div className="flex justify-between">
+      <div onClick={handleCardClick} className={`p-4 mt-1 duration-300 hover:cursor-pointer hover:bg-[#474747] ${isSelected ? 'bg-neutral-900' : 'bg-neutral-800'}`}>
+        <div className="grid grid-cols-[50%_50%]">
           <div className="flex items-center gap-3">
-            <FaCircleCheck className="text-lime-500" title="Ativo" />
-            <span className="mr-10 xl:text-lg">Futebol</span>
+            {status === 'ACTIVE' ? <FaCircleCheck className="text-lime-500" title="Ativo" /> : <IoMdCloseCircle className="text-red-500" size={18} title="Inativo" />}
+            <span className="mr-10">{name}</span>
           </div>
-          <div className="flex gap-10">
+          <div className="grid grid-cols-2">
             <div className="flex flex-col">
-              <span className="text-neutral-200 text-xs mb-1 xl:text-sm">Categoria</span>
-              <span className="text-neutral-200 text-xs xl:text-sm">Invasão</span>
+              <span className="text-neutral-200 text-xs mb-1">Categoria</span>
+              <span className="text-neutral-200 text-xs">{category}</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-neutral-200 text-xs mb-1 xl:text-sm">Ultima atualização</span>
-              <span className="text-neutral-200 text-xs xl:text-sm">15 Nov 2020, 10:25AM</span>
+              <span className="text-neutral-200 text-xs mb-1">Ultima atualização</span>
+              <span className="text-neutral-200 text-xs">{formattedDate(updatedAt)}</span>
             </div>
           </div>
         </div>
-      </main>
+      </div>
       <div className={`transition-all duration-300 overflow-hidden ${isSelected ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}
       >
         {isSelected && (
@@ -43,12 +70,12 @@ export function ActivityCard() {
               <h3 className="">Descrição</h3>
               <button className="text-lime-600 text-sm hover:text-lime-400 duration-300">Editar Atividade</button>
             </div>
-            <p className="text-sm mb-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores omnis ipsa corporis possimus est, quaerat minima libero dolorem nisi reiciendis repudiandae animi?.</p>
+            <p className="text-sm mb-2">{description}</p>
             <div className="flex justify-between">
-              <button className="text-red-600 text-sm hover:text-red-400 duration-300">Excluir Atividade</button>
+              <button onClick={() => handleDelete()} className="text-red-600 text-sm hover:text-red-400 duration-300">Excluir Atividade</button>
               <div className="flex flex-col">
-                <span className="text-neutral-200 text-xs mb-1 xl:text-sm">Criado em</span>
-                <span className="text-neutral-200 text-xs mb-1 xl:text-sm">15 Nov 2020, 10:25AM</span>
+                <span className="text-neutral-200 text-xs mb-1">Criado em</span>
+                <span className="text-neutral-200 text-xs mb-1">{formattedDate(createdAt)}</span>
               </div>
             </div>
           </div>
