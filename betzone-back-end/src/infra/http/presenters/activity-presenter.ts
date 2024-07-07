@@ -8,6 +8,8 @@ export class ActivityPresenter {
       description: activity.description,
       status: activity.status,
       category: activity.category,
+      createdAt: activity.createdAt,
+      updatedAt: activity.updatedAt,
     };
   }
 }
