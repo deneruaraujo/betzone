@@ -3,7 +3,7 @@
 - Certifique-se de ter o Docker e o Docker Compose instalados em seu sistema.
 ### 1 - Clonando Repositório
 ```
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone https://github.com/deneruaraujo/betzone.git
 ```
 ### 2 - Instalando Dependências
 - Na pasta front-end, utilize o seguinte comando:
