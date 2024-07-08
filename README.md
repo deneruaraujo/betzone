@@ -23,6 +23,9 @@ npm i
 - Para executar o front-end, utilize o comando: ```npm run dev```
 ### 5 - Acessando a aplicação
 - Acesse: http://localhost:3000/
+### 6 - Testes (é necessário estar na pasta back-end para realizar os testes)
+- Comando para Testes Unitários: ```npm run test```
+- Comando para Testes E2E: ```npm run test:e2e``` (certifique-se de que o container no docker está rodando)
 # Tecnologias, bibliotecas e frameworks utilizados
 ## Projeto em: TypeScript
 ### Front-end
