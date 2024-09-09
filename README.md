@@ -1,33 +1,33 @@
-# Instruções de como executar a aplicação
-## Pré-requisitos e Clonagem de repositório
-- Certifique-se de ter o Docker e o Docker Compose instalados em seu sistema.
-### 1 - Clonando Repositório
+# Instructions on How to Run the Application
+## Prerequisites and Cloning the Repository
+- Make sure you have Docker and Docker Compose installed on your system.
+### 1 - Cloning the Repository
 ```
 git clone https://github.com/deneruaraujo/betzone.git
 ```
-### 2 - Instalando Dependências
-- Na pasta front-end, utilize o seguinte comando:
+### 2 - Installing Dependencies
+- In the front-end folder, use the following command:
 ```
 npm i
 ```
-- Na pasta front-end, utilize o mesmo comando:
+- In the back-end folder, use the same command:
 ```
 npm i
 ```
-### 3 - Configurando Prisma e Docker
-- Na pasta back-end, crie uma pasta com o nome **data**
-- Na pasta back-end, utilize o comando ```docker-compose up -d``` para criar o container (certifique-se de ter o docker instalado e certifique-se de que o container está rodando)
-- Na pasta back-end utilize o comando ```npx prisma migrate dev``` (dê enter quando pedir um nome para a nova migração)
-### 4 - Executando back-end e front-end
-- Para executar o back-end, utilize o comando: ```npm run start``` (obs: utiliza a porta: 3001)
-- Para executar o front-end, utilize o comando: ```npm run dev```
-### 5 - Acessando a aplicação
-- Acesse: http://localhost:3000/
-### 6 - Testes (é necessário estar na pasta back-end para realizar os testes)
-- Comando para Testes Unitários: ```npm run test```
-- Comando para Testes E2E: ```npm run test:e2e``` (certifique-se de que o container no docker está rodando)
-# Tecnologias, bibliotecas e frameworks utilizados
-## Projeto em: TypeScript
+### 3 - Setting Up Prisma and Docker
+- In the back-end folder, create a folder named **data**
+- In the back-end folder, use the command ```docker-compose up -d``` to create the container (make sure Docker is installed and the container is running).
+- In the back-end folder, use the command ```npx prisma migrate dev``` (press Enter when asked for a name for the new migration).
+### 4 - Running Back-end and Front-end
+- To run the back-end, use the command: ```npm run start``` (Note: it runs on port 3001).
+- To run the front-end, use the command: ```npm run dev```
+### 5 - Accessing the Application
+- Access: http://localhost:3000/
+### 6 - Tests (you need to be in the back-end folder to run the tests)
+- Command for Unit Tests: ```npm run test```
+- Command for E2E Tests: ```npm run test:e2e``` (make sure the Docker container is running).
+# Technologies, Libraries, and Frameworks Used
+## Project in: TypeScript
 ### Front-end
 - HTML
 - CSS
@@ -43,20 +43,55 @@ npm i
 - PostgreSQL
 - Docker
 - Prisma
-# Informações adicionais
-O back-end deste projeto foi construído com base no DDD(Domain Driven Design), então a primeira coisa que fiz foi esclarecer seus Requisitos Funcionais, Requisitos não Funcionais e Regras de negócio, para assim ter objetivos claros (todos estão no README.me dentro do back-end).
-A estrutura de pastas é algo que eu gosto muito e faço a um bom tempo. No diretório raiz temos 3 pastas principais: prisma, src e test. Vou explicar cada uma.
+# Additional Information
+The back-end of this project was built based on DDD (Domain Driven Design). The first thing I did was clarify its Functional Requirements, Non-Functional Requirements, and Business Rules, to have clear objectives (all of these can be found in the README.md file inside the back-end folder). The folder structure is something I value highly and have used for a long time. In the root directory, we have 3 main folders: prisma, src, and test. I will explain each one.
 ### Prisma
-Aqui é onde ficam as migrations do prisma e o schema.
+This is where the Prisma migrations and schema are located.
 ### Test
-Aqui ficam os utils usados nos testes, como por exemplo factories e repositórios em memória.
+This is where the utils used for testing are, such as factories and in-memory repositories.
 ### Src
-Essa é a pasta mais importante, ela contém o arquivo main e está dividida entre 3 pastas: Core, Domain e Infra.
+This is the most important folder, containing the main file and divided into 3 subfolders: Core, Domain, and Infra.
 #### Core
-Aqui é onde ficam utilitários core do projeto, como classe base para criação de entidades, enums, interface e classe base de erros, types, etc.
+This is where the core utilities of the project are, such as the base class for creating entities, enums, interface and base class for errors, types, etc.
 #### Domain
-Dentro da pasta domain nós temos a pasta main que contém tudo que é relacionado diretamente aos casos de uso. Neste projeto por exemplos temos repositórios, os próprios casos de uso e entidades.
+Inside the domain folder, we have the main folder, which contains everything directly related to use cases. In this project, for example, we have repositories, the use cases themselves, and entities.
 #### Infra
-Dentro da Infra nós temos tudo que é ligado a banco de dados, controllers e requisições HTTP, como: mappers, repositórios, controllers, pipes, presenters, etc.
-
-Obs: Existem mais subpastas dentro do que foi explicado, mas ficaria muito longo pra explicar tudo.
+Inside the Infra folder, we have everything related to the database, controllers, and HTTP requests, such as: mappers, repositories, controllers, pipes, presenters, etc.
+# Endpoints
+## Create an Activity
+### [POST] /activities
+Expects to receive an object with the following fields:
+```
+{
+    name: '',
+    description: '',
+    status: 'ACTIVE',
+    category: ''
+}
+```
+## Get an Activity
+### [GET] /activities/:id
+Returns an activity based on the provided id.
+## Fetch All Activities
+### [GET] /activities
+Returns all activities, paginated at 20 activities per page.
+## Update an Activity
+### [PUT] /activities/:id
+Updates an activity by id. You can provide any or all of the following fields:
+```
+{
+    name: '',
+    description: '',
+    status: 'ACTIVE',
+    category: ''
+}
+```
+or just
+```
+{
+    description: ''
+}
+```
+## Delete an Activity
+### [DELETE] /activities/:id
+Deletes an activity based on the provided id.
