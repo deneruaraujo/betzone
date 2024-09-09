@@ -1,16 +1,16 @@
 ## Requisitos Funcionais
-- [x] Deve ser possível registrar uma atividade, contendo os seguintes dados:
+- [x] It should be able to register an activity with the following data:
   - name;
   - description;
   - status;
   - category;
-- [x] Deve ser possível editar uma atividade, sendo possível alterar todos os dados acima;
-- [x] Deve ser possível deletar uma atividade;
-- [X] Deve ser possível obter dados de uma única atividade;
-- [x] Deve ser possível listar todas as atividades;
+- [x] It should be able to edit an activity, allowing changes to all the above fields.
+- [x] It should be able to delete an activity.
+- [X] It should be able to retrieve data for a single activity.
+- [x] It should be able to list all activities.
 
 ## Requisitos não Funcionais
-- [x] Listagem de no máximo 20 atividades por página.
+- [x] The listing should display a maximum of 20 activities per page.
 
 ## Regras de Negócio
-- [x] Todos os campos devem ser preenchidos para a criação de uma nova atividade.
+- [x] All fields must be filled out to create a new activity.
